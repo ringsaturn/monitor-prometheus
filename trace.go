@@ -43,7 +43,7 @@ func genLabels(ctx *app.RequestContext) prom.Labels {
 	labels := make(prom.Labels)
 	labels[labelMethod] = defaultValIfEmpty(string(ctx.Request.Method()), unknownLabelValue)
 	labels[labelStatusCode] = defaultValIfEmpty(strconv.Itoa(ctx.Response.Header.StatusCode()), unknownLabelValue)
-	labels[labelPath] = defaultValIfEmpty(string(ctx.Request.Path()), unknownLabelValue)
+	labels[labelPath] = defaultValIfEmpty(string(ctx.FullPath()), unknownLabelValue)
 
 	return labels
 }
